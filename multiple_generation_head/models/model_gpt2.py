@@ -181,9 +181,7 @@ class GPT(nn.Module):
         
         else:
             import os
-            current_file_path = os.path.abspath(__file__)
-            parent_dir = os.path.dirname(current_file_path)
-            model_path = os.path.join(parent_dir, 'log', model_type)
+            model_path = os.path.join('/data/my_tools/build-nanogpt/log', model_type)
             assert os.path.isfile(model_path), f"checkpoint file {model_path} not found"
             checkpoint = torch.load(model_path, map_location='cpu', weights_only=False)
             model = GPT(GPTConfig(**checkpoint['config']))

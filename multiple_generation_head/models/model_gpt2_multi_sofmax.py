@@ -60,6 +60,9 @@ class GPT2MultiSoftmax(GPT):
         for name, param in self.named_parameters():
             if not any(x in name for x in ['inter_ln_f', 'inter_lm_head']):
                 param.requires_grad = False
+        # 最后一层的ln_f和lm_head不训练
+        for name, param in self.transformer.h[-1].named_parameters():
+            param.requires_grad = False
     
     def forward(self, idx, targets=None):
         B, T = idx.size()
@@ -76,14 +79,14 @@ class GPT2MultiSoftmax(GPT):
             if block.is_hook:
                 inter_logits[i] = block_logits
         
-        loss = None
+        loss, losses = None, None
         if targets is not None:
-            loss = 0
+            losses = torch.zeros(self.config.n_layer, device=idx.device)
             for layer, logits in inter_logits.items():
-                loss += F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
-            loss /= len(self.hook_layers)
+                losses[layer] = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1))
+            loss = losses.sum() / len(self.hook_layers)
 
-        return inter_logits, loss
+        return inter_logits, loss, losses
 
     @torch.no_grad()
     def generate(self, orig_idx, max_new_tokens, do_sample, temperature=1.0, top_k=None, eot_token=50256):
@@ -92,7 +95,7 @@ class GPT2MultiSoftmax(GPT):
             idx = idx_list[layer]
             for _ in range(max_new_tokens):
                 idx_cond = idx if idx.size(1) <= self.config.block_size else idx[:, -self.config.block_size:]
-                inter_logits, _ = self(idx_cond)
+                inter_logits, _, _ = self(idx_cond)
                 logits = inter_logits[layer]
                 
                 # 在这里添加截断操作，将logits限制在50257范围内（训练时使用了50304以加速）

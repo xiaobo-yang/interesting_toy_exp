@@ -1,0 +1,104 @@
+Traceback (most recent call last):
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 79, in <module>
+    model = GPT2MultiSoftmax.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 121, in from_pretrained
+    base_model = super().from_pretrained(model_type)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2.py", line 139, in from_pretrained
+    from transformers import GPT2LMHeadModel
+  File "<frozen importlib._bootstrap>", line 1229, in _handle_fromlist
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1767, in __getattr__
+    value = getattr(module, name)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1766, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1778, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 25, in <module>
+    import torch.utils.checkpoint
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/utils/checkpoint.py", line 15, in <module>
+    from torch._functorch._aot_autograd.functional_utils import is_fun
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/functional_utils.py", line 19, in <module>
+    from torch.fx.experimental.symbolic_shapes import definitely_true, sym_eq
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 65, in <module>
+    from torch.utils._sympy.functions import (
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/utils/_sympy/functions.py", line 7, in <module>
+    import sympy
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/__init__.py", line 30, in <module>
+    from sympy.core.cache import lazy_function
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/__init__.py", line 9, in <module>
+    from .expr import Expr, AtomicExpr, UnevaluatedExpr
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/expr.py", line 4157, in <module>
+    from .mul import Mul
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/mul.py", line 2194, in <module>
+    from .numbers import Rational
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/numbers.py", line 4363, in <module>
+    from .power import Pow
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/power.py", line 10, in <module>
+    from .function import (expand_complex, expand_multinomial,
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/function.py", line 279, in <module>
+    class Application(Basic, metaclass=FunctionClass):
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/basic.py", line 188, in __init_subclass__
+    _prepare_class_assumptions(cls)
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/assumptions.py", line 666, in _prepare_class_assumptions
+    if not hasattr(cls, pname):
+           ^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+[rank4]: Traceback (most recent call last):
+[rank4]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 79, in <module>
+[rank4]:     model = GPT2MultiSoftmax.from_pretrained(
+[rank4]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 121, in from_pretrained
+[rank4]:     base_model = super().from_pretrained(model_type)
+[rank4]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2.py", line 139, in from_pretrained
+[rank4]:     from transformers import GPT2LMHeadModel
+[rank4]:   File "<frozen importlib._bootstrap>", line 1229, in _handle_fromlist
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1767, in __getattr__
+[rank4]:     value = getattr(module, name)
+[rank4]:             ^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1766, in __getattr__
+[rank4]:     module = self._get_module(self._class_to_module[name])
+[rank4]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/import_utils.py", line 1778, in _get_module
+[rank4]:     return importlib.import_module("." + module_name, self.__name__)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/importlib/__init__.py", line 126, in import_module
+[rank4]:     return _bootstrap._gcd_import(name[level:], package, level)
+[rank4]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 25, in <module>
+[rank4]:     import torch.utils.checkpoint
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/utils/checkpoint.py", line 15, in <module>
+[rank4]:     from torch._functorch._aot_autograd.functional_utils import is_fun
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/functional_utils.py", line 19, in <module>
+[rank4]:     from torch.fx.experimental.symbolic_shapes import definitely_true, sym_eq
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 65, in <module>
+[rank4]:     from torch.utils._sympy.functions import (
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/utils/_sympy/functions.py", line 7, in <module>
+[rank4]:     import sympy
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/__init__.py", line 30, in <module>
+[rank4]:     from sympy.core.cache import lazy_function
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/__init__.py", line 9, in <module>
+[rank4]:     from .expr import Expr, AtomicExpr, UnevaluatedExpr
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/expr.py", line 4157, in <module>
+[rank4]:     from .mul import Mul
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/mul.py", line 2194, in <module>
+[rank4]:     from .numbers import Rational
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/numbers.py", line 4363, in <module>
+[rank4]:     from .power import Pow
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/power.py", line 10, in <module>
+[rank4]:     from .function import (expand_complex, expand_multinomial,
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/function.py", line 279, in <module>
+[rank4]:     class Application(Basic, metaclass=FunctionClass):
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/basic.py", line 188, in __init_subclass__
+[rank4]:     _prepare_class_assumptions(cls)
+[rank4]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/sympy/core/assumptions.py", line 666, in _prepare_class_assumptions
+[rank4]:     if not hasattr(cls, pname):
+[rank4]:            ^^^^^^^^^^^^^^^^^^^
+[rank4]: KeyboardInterrupt

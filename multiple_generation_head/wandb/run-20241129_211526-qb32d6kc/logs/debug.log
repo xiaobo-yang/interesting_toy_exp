@@ -1,0 +1,28 @@
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Current SDK version is 0.17.4
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Configure stats pid to 15706
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Loading settings from /home/yangxiaobo/.config/wandb/settings
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Loading settings from /data/my_scripts/interesting_toy_exp/multiple_generation_head/wandb/settings
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'multiple_generation_head/train_multiple_softmax.py', 'program_abspath': '/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py', 'program': '/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py'}
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:_log_setup():529] Logging user logs to /data/my_scripts/interesting_toy_exp/multiple_generation_head/wandb/run-20241129_211526-qb32d6kc/logs/debug.log
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:_log_setup():530] Logging internal logs to /data/my_scripts/interesting_toy_exp/multiple_generation_head/wandb/run-20241129_211526-qb32d6kc/logs/debug-internal.log
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:init():569] calling init triggers
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:init():576] wandb.init called with sweep_config: {}
+config: {'base_model_type': 'gpt2', 'total_batch_size': 524288, 'B': 16, 'T': 1024, 'grad_accum_steps': 4, 'max_lr': 0.0006, 'min_lr': 5.9999999999999995e-05, 'warmup_steps': 715, 'max_steps': 19073}
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:init():619] starting backend
+2024-11-29 21:15:26,546 INFO    MainThread:15706 [wandb_init.py:init():623] setting up manager
+2024-11-29 21:15:26,547 INFO    MainThread:15706 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-11-29 21:15:26,549 INFO    MainThread:15706 [wandb_init.py:init():631] backend started and connected
+2024-11-29 21:15:26,550 INFO    MainThread:15706 [wandb_init.py:init():720] updated telemetry
+2024-11-29 21:15:26,557 INFO    MainThread:15706 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-11-29 21:15:28,344 INFO    MainThread:15706 [wandb_run.py:_on_init():2402] communicating current version
+2024-11-29 21:15:28,855 INFO    MainThread:15706 [wandb_run.py:_on_init():2411] got version response upgrade_message: "wandb version 0.18.7 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-11-29 21:15:28,855 INFO    MainThread:15706 [wandb_init.py:init():804] starting run threads in backend
+2024-11-29 21:15:31,088 INFO    MainThread:15706 [wandb_run.py:_console_start():2380] atexit reg
+2024-11-29 21:15:31,088 INFO    MainThread:15706 [wandb_run.py:_redirect():2235] redirect: wrap_raw
+2024-11-29 21:15:31,088 INFO    MainThread:15706 [wandb_run.py:_redirect():2300] Wrapping output streams.
+2024-11-29 21:15:31,089 INFO    MainThread:15706 [wandb_run.py:_redirect():2325] Redirects installed.
+2024-11-29 21:15:31,090 INFO    MainThread:15706 [wandb_init.py:init():847] run started, returning control to user process

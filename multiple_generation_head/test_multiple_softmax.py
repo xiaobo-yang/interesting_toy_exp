@@ -33,3 +33,8 @@ for layer, output in output_list.items():
 print("-"*30)
 base_output = base_model.generate(input_ids, max_new_tokens, do_sample=False)
 print(f"Base model final layer:\n{enc.decode(base_output[0].tolist())}\n")
+
+
+# test optimizer config
+optimizer = model.configure_optimizers(weight_decay=0.1, learning_rate=6e-5, device_type='cpu', master_process=True)
+print(optimizer.state_dict())

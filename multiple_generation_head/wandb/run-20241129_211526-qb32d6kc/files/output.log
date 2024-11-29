@@ -1,0 +1,21 @@
+
+loading weights from pretrained gpt: gpt2
+found 99 shards for split train
+found 1 shards for split val
+num decayed parameter tensors: 5, with 192,986,880 parameters
+num non-decayed parameter tensors: 10, with 7,680 parameters
+using fused AdamW: True
+Traceback (most recent call last):
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 125, in <module>
+    val_losses_accum = torch.zeros(model.config.n_layer, device=device)
+                                   ^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1931, in __getattr__
+    raise AttributeError(
+AttributeError: 'DistributedDataParallel' object has no attribute 'config'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 125, in <module>
+[rank0]:     val_losses_accum = torch.zeros(model.config.n_layer, device=device)
+[rank0]:                                    ^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1931, in __getattr__
+[rank0]:     raise AttributeError(
+[rank0]: AttributeError: 'DistributedDataParallel' object has no attribute 'config'

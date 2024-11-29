@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 79, in <module>
+    model = GPT2MultiSoftmax.from_pretrained(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 121, in from_pretrained
+    base_model = super().from_pretrained(model_type)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2.py", line 139, in from_pretrained
+    from transformers import GPT2LMHeadModel
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/wandb/sdk/lib/import_hooks.py", line 182, in _exec_module
+    self.loader.exec_module(module)
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/__init__.py", line 26, in <module>
+    from . import dependency_versions_check
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/dependency_versions_check.py", line 16, in <module>
+    from .utils.versions import require_version, require_version_core
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/__init__.py", line 21, in <module>
+    from huggingface_hub import get_full_repo_name  # for backward compatibility
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1229, in _handle_fromlist
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/__init__.py", line 503, in __getattr__
+    submod = importlib.import_module(submod_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 61, in <module>
+    from ._inference_endpoints import InferenceEndpoint, InferenceEndpointType
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/_inference_endpoints.py", line 32, in <module>
+    class InferenceEndpointType(str, Enum):
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/enum.py", line 568, in __new__
+    raise exc
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/enum.py", line 242, in __set_name__
+    def __set_name__(self, enum_class, member_name):
+KeyboardInterrupt
+[rank5]: Traceback (most recent call last):
+[rank5]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 79, in <module>
+[rank5]:     model = GPT2MultiSoftmax.from_pretrained(
+[rank5]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 121, in from_pretrained
+[rank5]:     base_model = super().from_pretrained(model_type)
+[rank5]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2.py", line 139, in from_pretrained
+[rank5]:     from transformers import GPT2LMHeadModel
+[rank5]:   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+[rank5]:   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+[rank5]:   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/wandb/sdk/lib/import_hooks.py", line 182, in _exec_module
+[rank5]:     self.loader.exec_module(module)
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/__init__.py", line 26, in <module>
+[rank5]:     from . import dependency_versions_check
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/dependency_versions_check.py", line 16, in <module>
+[rank5]:     from .utils.versions import require_version, require_version_core
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/transformers/utils/__init__.py", line 21, in <module>
+[rank5]:     from huggingface_hub import get_full_repo_name  # for backward compatibility
+[rank5]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "<frozen importlib._bootstrap>", line 1229, in _handle_fromlist
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/__init__.py", line 503, in __getattr__
+[rank5]:     submod = importlib.import_module(submod_path)
+[rank5]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/importlib/__init__.py", line 126, in import_module
+[rank5]:     return _bootstrap._gcd_import(name[level:], package, level)
+[rank5]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 61, in <module>
+[rank5]:     from ._inference_endpoints import InferenceEndpoint, InferenceEndpointType
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/huggingface_hub/_inference_endpoints.py", line 32, in <module>
+[rank5]:     class InferenceEndpointType(str, Enum):
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/enum.py", line 568, in __new__
+[rank5]:     raise exc
+[rank5]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/enum.py", line 242, in __set_name__
+[rank5]:     def __set_name__(self, enum_class, member_name):
+[rank5]: KeyboardInterrupt

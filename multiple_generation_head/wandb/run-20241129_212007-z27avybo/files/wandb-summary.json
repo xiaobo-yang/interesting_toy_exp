@@ -1,0 +1,1 @@
+{"step": 0, "val_loss": 5.414425373077393, "val_loss_layer_7": 138.77281188964844, "val_loss_layer_8": 129.95095825195312, "val_loss_layer_9": 115.51980590820312, "val_loss_layer_10": 91.57255554199219, "val_loss_layer_11": 65.62641906738281, "_timestamp": 1732886430.0116217, "_runtime": 23.00212264060974, "_step": 0, "_wandb": {"runtime": 21}}

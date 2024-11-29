@@ -1,0 +1,59 @@
+
+loading weights from pretrained gpt: gpt2
+found 99 shards for split train
+found 1 shards for split val
+num decayed parameter tensors: 5, with 192,986,880 parameters
+num non-decayed parameter tensors: 10, with 7,680 parameters
+using fused AdamW: True
+Traceback (most recent call last):
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 131, in <module>
+    _, loss, losses = model(x, y)
+                      ^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 81, in forward
+    losses = torch.zeros(len(self.config.n_layer), device=idx.device)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'int' has no len()
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 131, in <module>
+[rank0]:     _, loss, losses = model(x, y)
+[rank0]:                       ^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1643, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1459, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/yangxiaobo/miniconda3/envs/test/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/models/model_gpt2_multi_sofmax.py", line 81, in forward
+[rank0]:     losses = torch.zeros(len(self.config.n_layer), device=idx.device)
+[rank0]:                          ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: TypeError: object of type 'int' has no len()

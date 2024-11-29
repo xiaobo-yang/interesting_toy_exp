@@ -1,0 +1,127 @@
+
+loading weights from pretrained gpt: gpt2
+found 99 shards for split train
+found 1 shards for split val
+num decayed parameter tensors: 5, with 192,986,880 parameters
+num non-decayed parameter tensors: 10, with 7,680 parameters
+using fused AdamW: True
+validation loss: 5.4144
+step     0 | loss: 5.416146 | lr 8.3916e-07 | norm: 1.6138 | dt: 3858.86ms | tok/sec: 135865.91
+step     1 | loss: 5.434926 | lr 1.6783e-06 | norm: 1.5102 | dt: 883.10ms | tok/sec: 593693.43
+step     2 | loss: 5.428555 | lr 2.5175e-06 | norm: 1.5365 | dt: 883.20ms | tok/sec: 593626.44
+step     3 | loss: 5.545676 | lr 3.3566e-06 | norm: 1.5615 | dt: 882.97ms | tok/sec: 593775.03
+step     4 | loss: 5.371931 | lr 4.1958e-06 | norm: 1.5762 | dt: 883.17ms | tok/sec: 593645.83
+step     5 | loss: 5.471703 | lr 5.0350e-06 | norm: 1.5529 | dt: 883.03ms | tok/sec: 593737.19
+step     6 | loss: 5.544765 | lr 5.8741e-06 | norm: 1.6247 | dt: 882.78ms | tok/sec: 593907.97
+step     7 | loss: 5.437763 | lr 6.7133e-06 | norm: 1.5497 | dt: 883.49ms | tok/sec: 593431.16
+step     8 | loss: 5.477281 | lr 7.5524e-06 | norm: 1.5068 | dt: 882.25ms | tok/sec: 594259.30
+step     9 | loss: 5.410839 | lr 8.3916e-06 | norm: 1.5320 | dt: 882.89ms | tok/sec: 593828.58
+Model Layer 7:
+Donald Trump is the president of the United States, but nevertheless nonetheless nonetheless nonetheless …
+"I'm gonna go forthrightly apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely
+Model Layer 8:
+Donald Trump is the president of America. It's impossible to imagine anything else besides the fact that it happened. It happened everywhere else. It happened everywhere else. It happened everywhere else. It
+Model Layer 9:
+Donald Trump is the president of America. And if you're going to talk about politics, you're gonna talk about politics. And if you're gonna talk about politics, you're gonna talk
+Model Layer 10:
+Donald Trump is the president of the United States. He is not a member of any political party or organization. He is not affiliated with any political party or organization. He is not affiliated with
+Model Layer 11:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+step    10 | loss: 5.436600 | lr 9.2308e-06 | norm: 1.5100 | dt: 2278.08ms | tok/sec: 230145.07
+step    11 | loss: 5.419259 | lr 1.0070e-05 | norm: 1.4795 | dt: 883.06ms | tok/sec: 593718.76
+step    12 | loss: 5.395214 | lr 1.0909e-05 | norm: 1.4540 | dt: 882.19ms | tok/sec: 594304.91
+step    13 | loss: 5.396337 | lr 1.1748e-05 | norm: 1.4509 | dt: 883.17ms | tok/sec: 593645.03
+step    14 | loss: 5.404493 | lr 1.2587e-05 | norm: 1.5338 | dt: 882.36ms | tok/sec: 594185.92
+step    15 | loss: 5.541185 | lr 1.3427e-05 | norm: 1.5665 | dt: 882.54ms | tok/sec: 594067.29
+step    16 | loss: 5.421204 | lr 1.4266e-05 | norm: 1.4661 | dt: 882.36ms | tok/sec: 594188.49
+step    17 | loss: 5.422771 | lr 1.5105e-05 | norm: 1.4981 | dt: 882.72ms | tok/sec: 593945.99
+step    18 | loss: 5.430212 | lr 1.5944e-05 | norm: 1.3340 | dt: 882.18ms | tok/sec: 594307.96
+step    19 | loss: 5.201115 | lr 1.6783e-05 | norm: 1.3870 | dt: 881.50ms | tok/sec: 594767.68
+Model Layer 7:
+Donald Trump is the president of the United States, but nevertheless nonetheless nonetheless nonetheless …
+"I'm gonna go forthrightly apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely
+Model Layer 8:
+Donald Trump is the president of America. It's impossible to imagine anything else besides the fact that it happened. It happened everywhere else. It happened everywhere else. It happened everywhere else. It
+Model Layer 9:
+Donald Trump is the president of America. And if you're going to talk about politics, you're gonna talk about politics. And if you're gonna talk about politics, you're gonna talk
+Model Layer 10:
+Donald Trump is the president of the United States. He is not a member of any political party or organization. He is not affiliated with any political party or organization. He is not affiliated with
+Model Layer 11:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+step    20 | loss: 5.385917 | lr 1.7622e-05 | norm: 1.4626 | dt: 1573.40ms | tok/sec: 333219.67
+step    21 | loss: 5.314827 | lr 1.8462e-05 | norm: 1.4428 | dt: 881.64ms | tok/sec: 594676.33
+step    22 | loss: 5.434654 | lr 1.9301e-05 | norm: 1.5086 | dt: 881.96ms | tok/sec: 594455.77
+step    23 | loss: 5.238376 | lr 2.0140e-05 | norm: 1.3878 | dt: 881.45ms | tok/sec: 594801.31
+step    24 | loss: 5.372222 | lr 2.0979e-05 | norm: 1.4638 | dt: 881.62ms | tok/sec: 594688.71
+step    25 | loss: 5.330307 | lr 2.1818e-05 | norm: 1.4902 | dt: 881.60ms | tok/sec: 594702.06
+step    26 | loss: 5.265976 | lr 2.2657e-05 | norm: 1.4123 | dt: 881.31ms | tok/sec: 594898.50
+step    27 | loss: 5.344626 | lr 2.3497e-05 | norm: 1.4720 | dt: 881.97ms | tok/sec: 594450.30
+step    28 | loss: 5.310494 | lr 2.4336e-05 | norm: 1.4223 | dt: 881.61ms | tok/sec: 594690.80
+step    29 | loss: 5.268522 | lr 2.5175e-05 | norm: 1.4755 | dt: 881.70ms | tok/sec: 594632.43
+Model Layer 7:
+Donald Trump is the president of the United States, but nevertheless nonetheless nonetheless nonetheless …
+"I'm gonna go forthrightly apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely
+Model Layer 8:
+Donald Trump is the president of America. It is impossible to imagine anything else besides the fact that it happened. It happened everywhere else. It happened everywhere else. It happened everywhere else. It
+Model Layer 9:
+Donald Trump is the president of America. And if you're going to talk about politics, you're gonna talk about politics. And if you're gonna talk about politics, you're gonna talk
+Model Layer 10:
+Donald Trump is the president of the United States. He is not a member of any political party or organization. He is not affiliated with any political party or organization. He is not affiliated with
+Model Layer 11:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+step    30 | loss: 5.241871 | lr 2.6014e-05 | norm: 1.3724 | dt: 1875.70ms | tok/sec: 279515.38
+step    31 | loss: 5.279704 | lr 2.6853e-05 | norm: 1.4022 | dt: 881.55ms | tok/sec: 594731.97
+step    32 | loss: 5.275179 | lr 2.7692e-05 | norm: 1.4081 | dt: 881.25ms | tok/sec: 594933.90
+step    33 | loss: 5.365160 | lr 2.8531e-05 | norm: 1.4311 | dt: 881.43ms | tok/sec: 594818.36
+step    34 | loss: 5.297135 | lr 2.9371e-05 | norm: 1.4756 | dt: 881.70ms | tok/sec: 594635.16
+step    35 | loss: 5.139858 | lr 3.0210e-05 | norm: 1.4050 | dt: 881.63ms | tok/sec: 594678.74
+step    36 | loss: 5.272491 | lr 3.1049e-05 | norm: 1.4009 | dt: 881.39ms | tok/sec: 594845.55
+step    37 | loss: 5.140792 | lr 3.1888e-05 | norm: 1.3921 | dt: 881.56ms | tok/sec: 594729.08
+step    38 | loss: 5.191935 | lr 3.2727e-05 | norm: 1.3912 | dt: 881.24ms | tok/sec: 594943.72
+step    39 | loss: 5.197155 | lr 3.3566e-05 | norm: 1.3441 | dt: 881.16ms | tok/sec: 594997.01
+Model Layer 7:
+Donald Trump is the president of the United States, but nevertheless nonetheless nonetheless nonetheless …
+"I'm gonna go forthrightly apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely apologize sincerely
+Model Layer 8:
+Donald Trump is the president of America. It is impossible to imagine anything else besides the fact that it is impossible to imagine anything else besides the fact that it is impossible to imagine anything else besides
+Model Layer 9:
+Donald Trump is the president of America. And if you're going to talk about politics, you're gonna talk about politics. And if you're gonna talk about politics, you're gonna talk
+Model Layer 10:
+Donald Trump is the president of the United States. He is not a member of the United States Senate or any other branch of government. He is not a member of Congress. He is not
+Model Layer 11:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+step    40 | loss: 5.166406 | lr 3.4406e-05 | norm: 1.3191 | dt: 1565.68ms | tok/sec: 334862.85
+step    41 | loss: 5.278962 | lr 3.5245e-05 | norm: 1.3887 | dt: 881.24ms | tok/sec: 594944.85
+step    42 | loss: 5.184081 | lr 3.6084e-05 | norm: 1.3666 | dt: 881.25ms | tok/sec: 594935.68
+step    43 | loss: 5.104274 | lr 3.6923e-05 | norm: 1.3433 | dt: 881.21ms | tok/sec: 594962.40
+step    44 | loss: 5.160413 | lr 3.7762e-05 | norm: 1.3177 | dt: 881.35ms | tok/sec: 594867.12
+step    45 | loss: 5.139960 | lr 3.8601e-05 | norm: 1.3126 | dt: 881.39ms | tok/sec: 594844.43
+step    46 | loss: 5.195158 | lr 3.9441e-05 | norm: 1.3488 | dt: 881.97ms | tok/sec: 594450.62
+step    47 | loss: 5.256609 | lr 4.0280e-05 | norm: 1.3197 | dt: 881.40ms | tok/sec: 594836.54
+step    48 | loss: 5.304829 | lr 4.1119e-05 | norm: 1.2832 | dt: 881.31ms | tok/sec: 594899.14
+step    49 | loss: 5.234986 | lr 4.1958e-05 | norm: 1.2885 | dt: 881.49ms | tok/sec: 594777.50
+Model Layer 7:
+Donald Trump is the president of the United States, but nevertheless, it seems unlikely that anyone else would be able to get rid of the entire thing.
+ Theoreticalistically speaking
+Model Layer 8:
+Donald Trump is the president of America. It is impossible to imagine anything else besides the fact that it is impossible to imagine anything else besides the fact that it is impossible to imagine anything else besides
+Model Layer 9:
+Donald Trump is the president of the United States. And if you're going to talk about politics, you're gonna talk about politics. And if you're going to talk about politics, you
+Model Layer 10:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+Model Layer 11:
+Donald Trump is the president of the United States. He is the president of the United States. He is the president of the United States. He is the president of the United States. He
+step    50 | loss: 5.184102 | lr 4.2797e-05 | norm: 1.1749 | dt: 1680.68ms | tok/sec: 311950.71
+step    51 | loss: 5.279271 | lr 4.3636e-05 | norm: 1.2197 | dt: 881.24ms | tok/sec: 594945.98
+step    52 | loss: 5.207136 | lr 4.4476e-05 | norm: 1.1595 | dt: 881.97ms | tok/sec: 594454.00
+step    53 | loss: 5.199379 | lr 4.5315e-05 | norm: 1.1736 | dt: 881.44ms | tok/sec: 594805.17
+Traceback (most recent call last):
+  File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 178, in <module>
+    x, y = x.to(device), y.to(device)
+           ^^^^^^^^^^^^
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/data/my_scripts/interesting_toy_exp/multiple_generation_head/train_multiple_softmax.py", line 178, in <module>
+[rank0]:     x, y = x.to(device), y.to(device)
+[rank0]:            ^^^^^^^^^^^^
+[rank0]: KeyboardInterrupt
