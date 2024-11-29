@@ -3,12 +3,16 @@ import time
 from datetime import datetime
 import wandb
 import torch
+import torch.nn.functional as F
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 import tiktoken
 
 from models.model_gpt2_multi_sofmax import GPT2MultiSoftmax
 from utils.dataloader import DataLoaderLite
+import sys
+sys.path.append('/data/my_tools/build-nanogpt/')
+from hellaswag import render_example, iterate_examples
 
 # distributed
 distributed = int(os.environ.get('RANK', -1)) != -1 # is this a ddp run?
@@ -106,7 +110,25 @@ def get_lr(it):
     assert 0 <= decay_ratio <= 1
     coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio)) # coeff starts at 1 and goes to 0
     return min_lr + coeff * (max_lr - min_lr)
-
+# for hellaswag
+def get_most_likely_row(tokens, mask, logits):
+    # evaluate the autoregressive loss at all positions
+    shift_logits = (logits[..., :-1, :]).contiguous()
+    shift_tokens = (tokens[..., 1:]).contiguous()
+    flat_shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+    flat_shift_tokens = shift_tokens.view(-1)
+    shift_losses = F.cross_entropy(flat_shift_logits, flat_shift_tokens, reduction='none')
+    shift_losses = shift_losses.view(tokens.size(0), -1)
+    # now get the average loss just for the completion region (where mask == 1), in each row
+    shift_mask = (mask[..., 1:]).contiguous() # we must shift mask, so we start at the last prompt token
+    masked_shift_losses = shift_losses * shift_mask
+    # sum and divide by the number of 1s in the mask
+    sum_loss = masked_shift_losses.sum(dim=1)
+    avg_loss = sum_loss / shift_mask.sum(dim=1)
+    # now we have a loss for each of the 4 completions
+    # the one with the lowest loss should be the most likely
+    pred_norm = avg_loss.argmin().item()
+    return pred_norm
 
 optimizer = model.configure_optimizers(weight_decay=0.1, learning_rate=max_lr, device_type=device_type, master_process=master_process)
 if use_compile:
@@ -146,6 +168,8 @@ for step in range(max_steps):
                 }
                 log_info.update({f"val_loss_layer_{layer}": val_losses_accum[layer].item() for layer in raw_model.hook_layers})
                 wandb.log(log_info)
+            
+            # 保存模型
             if step > 0 and (step % save_steps == 0 or last_step):
                 # optionally write model checkpoints
                 checkpoint_path = os.path.join(log_dir, f"{run_name}_step_{step:05d}.pt")
@@ -158,23 +182,59 @@ for step in range(max_steps):
                     'wandb_id': wandb.run.id if use_wandb else None
                 }
                 torch.save(checkpoint, checkpoint_path)
-        
-            if not use_compile:
-                model.eval()
-                prompt = "Donald Trump is the president of"
-                max_new_tokens = 32
-                input_ids = [enc.encode(prompt)]
-                input_ids = torch.tensor(input_ids, device=device)
-                output_list = raw_model.generate(input_ids, max_new_tokens, do_sample=False)
-                if use_wandb:
-                    samples_table = wandb.Table(columns=["step", "rank", "layer", "text"])
-                for layer, output in output_list.items():
-                    decoded = enc.decode(output[0].tolist())
-                    print(f"Model Layer {layer}:\n{decoded}\n")
-                    samples_table.add_data(step, rank, layer, decoded) if use_wandb else None
-                if use_wandb:
-                    wandb.log({f"{run_name}_generated_samples": samples_table})
+            
+        if not use_compile:
+            # 生成样本
+            model.eval()
+            prompt = "Donald Trump is the president of"
+            max_new_tokens = 32
+            input_ids = [enc.encode(prompt)]
+            input_ids = torch.tensor(input_ids, device=device)
+            output_list = raw_model.generate(input_ids, max_new_tokens, do_sample=True)
+            if use_wandb:
+                samples_table = wandb.Table(columns=["step", "rank", "layer", "text"])
+            for layer, output in output_list.items():
+                decoded = enc.decode(output[0].tolist())
+                print(f"[Rank {rank}] Model Layer {layer}:\n{decoded}\n")
+                samples_table.add_data(step, rank, layer, decoded) if use_wandb else None
+            if use_wandb and master_process:
+                wandb.log({f"{run_name}_generated_samples": samples_table})
 
+            # hellaswag
+            print('Evaluating HellaSwag...') if master_process else None
+            all_num_correct_norm = {layer: 0 for layer in raw_model.hook_layers}
+            all_num_total = {layer: 0 for layer in raw_model.hook_layers}
+            all_acc_norm = {layer: 0.0 for layer in raw_model.hook_layers}
+            for i, example in enumerate(iterate_examples("val")):
+                # only process examples where i % ddp_world_size == ddp_rank
+                if i % world_size != rank:
+                    continue
+                # render the example into tokens and labels
+                _, tokens, mask, label = render_example(example)
+                tokens = tokens.to(device)
+                mask = mask.to(device)
+                # get the logits
+                with torch.no_grad():
+                    with torch.autocast(device_type=device_type, dtype=torch.bfloat16):
+                        all_logits, loss, losses = model(tokens)
+                    for layer, logits in all_logits.items():
+                        pred_norm = get_most_likely_row(tokens, mask, logits)
+                        all_num_total[layer] += 1
+                        all_num_correct_norm[layer] += int(pred_norm == label)
+            # reduce the stats across all processes
+            all_num_total_tensor = torch.zeros(raw_model.config.n_layer, dtype=torch.long, device=device)
+            all_num_correct_norm_tensor = torch.zeros(raw_model.config.n_layer, dtype=torch.long, device=device)
+            for layer in raw_model.hook_layers:
+                all_num_total_tensor[layer] = all_num_total[layer]
+                all_num_correct_norm_tensor[layer] = all_num_correct_norm[layer]
+            if distributed:
+                dist.all_reduce(all_num_total_tensor, op=dist.ReduceOp.SUM)
+                dist.all_reduce(all_num_correct_norm_tensor, op=dist.ReduceOp.SUM)
+            all_acc_norm = all_num_correct_norm_tensor / all_num_total_tensor
+            for layer in raw_model.hook_layers:
+                print(f"[Rank {rank}] HellaSwag accuracy on layer {layer}: {all_num_correct_norm_tensor[layer]}/{all_num_total_tensor[layer]}={all_acc_norm[layer]:.4f}")
+            if use_wandb and master_process:
+                wandb.log({f"hellaswag_accuracy_layer_{layer}": all_acc_norm[layer] for layer in raw_model.hook_layers})
 
 
     # do one step of the optimization
