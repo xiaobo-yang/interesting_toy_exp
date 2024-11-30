@@ -23,6 +23,12 @@ prompt = "Donald Trump is the president of"
 max_new_tokens = 64
 input_ids = [enc.encode(prompt)]
 input_ids = torch.tensor(input_ids, device=device)
-output_list = model.generate(input_ids, max_new_tokens, do_sample=True)
+output_list = model.generate(input_ids, max_new_tokens, do_sample=True, temperature=0.3)
 for layer, output in output_list.items():
     print(f"Model Layer {layer}:\n{enc.decode(output[0].tolist())}\n")
+
+
+# compare with the original model
+base_model = GPT.from_pretrained('gpt2_model_19072.pt').to(device)
+output_list = base_model.generate(input_ids, max_new_tokens, do_sample=True, temperature=0.3)
+print(f"Base Model:\n{enc.decode(output_list[0].tolist())}\n")
