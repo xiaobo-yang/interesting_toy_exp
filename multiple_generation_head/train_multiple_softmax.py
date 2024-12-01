@@ -41,7 +41,7 @@ device_type = "cuda" if device.startswith("cuda") else "cpu"
 
 
 # model params
-model_type = 'gpt2_model_19072.pt'
+model_type = 'gpt2'
 hook_layers = list(range(7,12))  # 假设是12层模型
 freeze_base = True
 # train params
@@ -67,11 +67,11 @@ log_dir = "log"
 os.makedirs(log_dir, exist_ok=True)
 save_steps = 5000 # save a checkpoint every this many steps
 assert save_steps % 250 == 0, "save_steps should be divisible by 250 for validation loss evaluation"
-run_name = f"gpt2-multi-softmax_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+run_name = f"{model_type}-multi-softmax_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 use_wandb = True
 if use_wandb and master_process:
     wandb.init(project="multiple-softmax", name=run_name, config={
-        "base_model_type": 'gpt2',
+        "base_model_type": model_type,
         "total_batch_size": total_batch_size,
         "B": B,
         "T": T,
@@ -85,7 +85,7 @@ if use_wandb and master_process:
 
 
 # load
-model = GPT2MultiSoftmax.from_pretrained(
+model = GPT2MultiSoftmax.model_surgery_from_pretrained(
     model_type,
     hook_layers=hook_layers,
     freeze_base=freeze_base  # 设置为True则只训练新增的层

@@ -10,12 +10,12 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # 创建带有多个softmax头的模型，在第6层和最后一层添加预测头
 hook_layers = list(range(7,12))  # 假设是12层模型
-model = GPT2MultiSoftmax.from_pretrained(
+model = GPT2MultiSoftmax.model_surgery_from_pretrained(
     'gpt2_model_19072.pt',
     hook_layers=hook_layers,
     freeze_base=True  # 设置为True则只训练新增的层
 ).to(device)
-model.load_state_dict(torch.load('log/gpt2-multi-softmax_20241129_223536_step_05000.pt')['model'])
+model.load_state_dict(torch.load('log/gpt2_model_19072.pt-multi-softmax_20241129_223536_step_05000.pt')['model'])
 
 # test generation
 enc = tiktoken.get_encoding('gpt2')

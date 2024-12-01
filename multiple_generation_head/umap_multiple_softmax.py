@@ -15,7 +15,7 @@ model = GPT2MultiSoftmax.from_pretrained(
     hook_layers=hook_layers,
     freeze_base=True  # 设置为True则只训练新增的层
 ).to(device)
-model.load_state_dict(torch.load('log/gpt2-multi-softmax_20241129_223536_step_05000.pt')['model'])
+model.load_state_dict(torch.load('log/gpt2_model_19072.pt-multi-softmax_20241129_223536_step_05000.pt')['model'])
 
 reducer = umap.UMAP(
     n_components=2,

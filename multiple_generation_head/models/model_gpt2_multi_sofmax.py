@@ -118,7 +118,7 @@ class GPT2MultiSoftmax(GPT):
 
 
     @classmethod
-    def from_pretrained(cls, model_type, hook_layers=[], freeze_base=False):
+    def model_surgery_from_pretrained(cls, model_type, hook_layers=[], freeze_base=False):
         """从预训练模型加载并添加多softmax头"""
         # 首先加载原始GPT模型
         base_model = super().from_pretrained(model_type)
