@@ -10,7 +10,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # 创建带有多个softmax头的模型，在第6层和最后一层添加预测头
 hook_layers = list(range(7,12))  # 假设是12层模型
 model_name = 'gpt2-multi-softmax'
-model = GPT2MultiSoftmax.from_pretrained(
+model = GPT2MultiSoftmax.model_surgery_from_pretrained(
     'gpt2_model_19072.pt',
     hook_layers=hook_layers,
     freeze_base=True  # 设置为True则只训练新增的层
