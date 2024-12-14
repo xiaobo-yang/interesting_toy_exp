@@ -11,6 +11,8 @@ import torch.distributed as dist
     torchrun --nproc_per_node=8 test_llama3_gsm8k.py
 
     For llama3.2 1b, Total Accuracy (greedy decoding): 0.453 and 0.408 (4-bit quantization)
+
+    ref: https://github.com/SewoongLee/reproduce-llama3-arithmetic
 """
 
 def load_jsonlines(file_name: str):
